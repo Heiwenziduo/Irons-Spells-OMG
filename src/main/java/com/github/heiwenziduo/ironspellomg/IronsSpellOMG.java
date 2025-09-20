@@ -1,4 +1,4 @@
-package com.github.heiwenziduo.examplemod;
+package com.github.heiwenziduo.ironspellomg;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -10,21 +10,15 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(ExampleMod.ModId)
-public class ExampleMod {
-    public static final String ModId = "examplemod";
+@Mod(IronsSpellOMG.ModId)
+public class IronsSpellOMG {
+    public static final String ModId = "ironspellomg";
 
-    public ExampleMod(FMLJavaModLoadingContext context) {
+    public IronsSpellOMG(FMLJavaModLoadingContext context) {
         IEventBus eventBus = context.getModEventBus();
 
-        eventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
-
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
