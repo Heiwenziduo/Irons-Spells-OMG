@@ -1,5 +1,6 @@
 package com.github.heiwenziduo.ironspellomg;
 
+import com.github.heiwenziduo.ironspellomg.initializer.OMGSpells;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -10,6 +11,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+/// 铁咒: &nbsp;技能征召
 @Mod(IronsSpellOMG.ModId)
 public class IronsSpellOMG {
     public static final String ModId = "ironspellomg";
@@ -17,6 +19,7 @@ public class IronsSpellOMG {
     public IronsSpellOMG(FMLJavaModLoadingContext context) {
         IEventBus eventBus = context.getModEventBus();
 
+        OMGSpells.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

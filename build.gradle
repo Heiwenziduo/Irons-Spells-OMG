@@ -152,6 +152,11 @@ repositories {
         name = "Iron's Maven - Snapshots"
         url = "https://code.redspace.io/snapshots"
     }
+    maven { url = "https://maven.enginehub.org/repo/" }
+    maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
+    maven { url = "https://maven.theillusivec4.top" }
+    maven { url = "https://maven.blamejared.com" }
+    maven { url = "https://maven.kosmx.dev/" }
     maven {
         name = "Curse Maven"
         url = "https://www.cursemaven.com"
@@ -177,6 +182,29 @@ dependencies {
     // iron's spells n spellbooks
     implementation fg.deobf("io.redspace.ironsspellbooks:irons_spellbooks:${irons_spells_version}")
 
+    // GECKOLIB ***************************************************************************************************
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+
+    // CAELUS *****************************************************************************************************
+    compileOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:${caelus_version}:api")
+    runtimeOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:${caelus_version}")
+
+    // PLAYER ANIMATOR ********************************************************************************************
+    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
+
+    // CURIOS *****************************************************************************************************
+    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+    //Uncomment the following line to run with Curios in dev
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+
+    // JEI ********************************************************************************************************
+    compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge-api:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
+    //runtimeOnly fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:4599099")
+
+
+    // myself
     implementation fg.deobf(jarJar("com.github.heiwenziduo.fvlib:fvlib:1.0.0")) {
         transitive = false
         jarJar.ranged(it, "[1.0.0,)")
@@ -191,10 +219,7 @@ dependencies {
 //    debug.export = true
 //}
 
-// This block of code expands all declared replace properties in the specified resource targets.
-// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
-// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
-// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
+
 tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [
             minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
