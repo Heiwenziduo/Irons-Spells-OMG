@@ -1,6 +1,7 @@
 package com.github.heiwenziduo.ironspellomg.initializer;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
+import com.github.heiwenziduo.ironspellomg.spell.timelessvoid.ChronoSphere;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,5 +20,5 @@ public class OMGSpells {
         return SPELLS.register(spell.getSpellName(), () -> spell);
     }
 
-    //public static final RegistryObject<AbstractSpell> SUPER_HEAL_SPELL = registerSpell(new SuperHealSpell());
+    public static final RegistryObject<AbstractSpell> CHRONO_SPHERE = registerSpell(new ChronoSphere());
 }

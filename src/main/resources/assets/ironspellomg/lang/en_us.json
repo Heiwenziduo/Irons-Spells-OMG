@@ -1,3 +1,6 @@
 {
+  "ui.ironspellomg.effect_length": "%d Effect Length",
+  "ui.ironspellomg.radius": "%d Block Radius",
 
+  "spell.ironspellomg.chrono_sphere": "Chronosphere"
 }

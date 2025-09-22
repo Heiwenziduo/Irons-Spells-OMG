@@ -67,10 +67,16 @@ public class TecEntity extends Entity {
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag pCompound) {}
+    protected void readAdditionalSaveData(CompoundTag pCompound) {
+        if (pCompound.contains("RemainTick", CompoundTag.TAG_INT)) {
+            entityData.set(DATA_REMAIN_TICK, pCompound.getInt("RemainTick"));
+        }
+    }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag pCompound) {}
+    protected void addAdditionalSaveData(CompoundTag pCompound) {
+        pCompound.putInt("RemainTick", entityData.get(DATA_REMAIN_TICK));
+    }
 
     public int getDataRemainTick() {
         return entityData.get(DATA_REMAIN_TICK);

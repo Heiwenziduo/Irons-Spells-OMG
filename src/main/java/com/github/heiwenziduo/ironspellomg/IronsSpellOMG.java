@@ -1,5 +1,6 @@
 package com.github.heiwenziduo.ironspellomg;
 
+import com.github.heiwenziduo.ironspellomg.initializer.OMGEntities;
 import com.github.heiwenziduo.ironspellomg.initializer.OMGSpells;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,6 +20,7 @@ public class IronsSpellOMG {
     public IronsSpellOMG(FMLJavaModLoadingContext context) {
         IEventBus eventBus = context.getModEventBus();
 
+        OMGEntities.register(eventBus);
         OMGSpells.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
