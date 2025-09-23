@@ -54,7 +54,7 @@ public class ChronoSphere extends AbstractSpell {
     public void onCast(Level world, int spellLevel, LivingEntity caster, CastSource castSource, MagicData playerMagicData) {
         Level level = caster.level();
         float radius = getSphereRadius(spellLevel);
-        Vec3 summonPos = caster.position().add(0, caster.getEyeHeight(), 0).add(caster.getLookAngle().scale(radius / 2));
+        Vec3 summonPos = caster.position().add(0, caster.getEyeHeight(), 0).add(caster.getLookAngle().scale(radius / 3));
 
         ChronoSphereEntity sphere = new ChronoSphereEntity(level, getSphereEffectLength(spellLevel), radius, caster);
         sphere.setPos(summonPos);

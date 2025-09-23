@@ -1,6 +1,7 @@
 package com.github.heiwenziduo.ironspellomg.client;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
+import com.github.heiwenziduo.ironspellomg.client.model.ChronoSphereModel;
 import com.github.heiwenziduo.ironspellomg.client.renderer.ChronoSphereRenderer;
 import com.github.heiwenziduo.ironspellomg.initializer.OMGEntities;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,6 +26,6 @@ public class OMGClientSetUp {
 
     @SubscribeEvent
     public static void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-
+        event.registerLayerDefinition(ChronoSphereModel.LAYER_LOCATION, ChronoSphereModel::createBodyLayer);
     }
 }

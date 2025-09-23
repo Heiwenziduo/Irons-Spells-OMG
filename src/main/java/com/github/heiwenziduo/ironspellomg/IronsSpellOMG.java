@@ -2,6 +2,7 @@ package com.github.heiwenziduo.ironspellomg;
 
 import com.github.heiwenziduo.ironspellomg.initializer.OMGEntities;
 import com.github.heiwenziduo.ironspellomg.initializer.OMGSpells;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -11,6 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.jetbrains.annotations.NotNull;
 
 /// 铁咒: &nbsp;技能征召
 @Mod(IronsSpellOMG.ModId)
@@ -32,14 +34,7 @@ public class IronsSpellOMG {
         // Do something when the server starts
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = ModId, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            // Some client setup code
-        }
+    public static ResourceLocation resource(@NotNull String name) {
+        return ResourceLocation.fromNamespaceAndPath(ModId, name);
     }
 }

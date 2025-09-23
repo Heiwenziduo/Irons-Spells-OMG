@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.NotNull;
 
-public class TecEntity extends Entity {
+public abstract class TecEntity extends Entity {
     protected static final EntityDataAccessor<Integer> DATA_REMAIN_TICK = SynchedEntityData.defineId(TecEntity.class, EntityDataSerializers.INT);
 
     public TecEntity(EntityType<?> pEntityType, Level pLevel) {

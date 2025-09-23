@@ -12,16 +12,19 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 import static com.github.heiwenziduo.ironspellomg.initializer.OMGEntities.CHRONO_SPHERE_ENTITY;
 
 public class ChronoSphereEntity extends TecEntity implements TraceableEntity {
-    private static final EntityDataAccessor<Float> DATA_RADIUS = SynchedEntityData.defineId(ChronoSphereEntity.class, EntityDataSerializers.FLOAT);
+    public static final EntityDataAccessor<Float> DATA_RADIUS = SynchedEntityData.defineId(ChronoSphereEntity.class, EntityDataSerializers.FLOAT);
 
     private LivingEntity caster = null;
+    private String casterUUID = "";
 
     public ChronoSphereEntity(EntityType<ChronoSphereEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -32,11 +35,13 @@ public class ChronoSphereEntity extends TecEntity implements TraceableEntity {
         setDataRemainTick((int) (effectLength * 20));
         entityData.set(DATA_RADIUS, radius);
         caster = pCaster;
+        if (pCaster != null)
+            casterUUID = pCaster.getStringUUID();
     }
 
     @Override
     public void tick() {
-        //todo: 1.将remainTick写入AdditionalSaveData 2.使之认主(team?)
+        //todo: 2.使之认主(team?)
         if (tickCount % 5 == 0) {
             // 将结界中的活物时停
             float radius = entityData.get(DATA_RADIUS);
@@ -45,8 +50,9 @@ public class ChronoSphereEntity extends TecEntity implements TraceableEntity {
                     //
                     e -> e instanceof LivingEntity && e.isPickable() && e.isAlive() && e != getOwner());
             for (var e : entitiesList) {
-                if (e.position().distanceToSqr(position()) <= radius * radius)
-                    FvUtil.setTimeLock((LivingEntity) e, 10);
+                if (Objects.equals(casterUUID, e.getStringUUID())) continue;
+                //if (e.position().distanceToSqr(position()) <= radius * radius)
+                FvUtil.setTimeLock((LivingEntity) e, 10);
             }
         }
         super.tick();
@@ -64,12 +70,16 @@ public class ChronoSphereEntity extends TecEntity implements TraceableEntity {
         if (pCompound.contains("Radius", CompoundTag.TAG_FLOAT)) {
             entityData.set(DATA_RADIUS, pCompound.getFloat("Radius"));
         }
+        if (pCompound.contains("CasterUUID", CompoundTag.TAG_STRING)) {
+            casterUUID = pCompound.getString("CasterUUID");
+        }
     }
 
     @Override
     protected void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putFloat("Radius", entityData.get(DATA_RADIUS));
+        pCompound.putString("CasterUUID", casterUUID);
     }
 
     @Override
@@ -80,5 +90,13 @@ public class ChronoSphereEntity extends TecEntity implements TraceableEntity {
     @Override
     public @Nullable Entity getOwner() {
         return caster;
+    }
+
+    /// 基于半径重设碰撞箱
+    @Override
+    protected AABB makeBoundingBox() {
+        Vec3 pos = position();
+        float radius = entityData.get(DATA_RADIUS);
+        return AABB.ofSize(pos, radius * 2, radius * 2, radius * 2);
     }
 }

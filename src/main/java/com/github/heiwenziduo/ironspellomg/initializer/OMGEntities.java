@@ -13,6 +13,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static com.github.heiwenziduo.ironspellomg.IronsSpellOMG.resource;
+
 public class OMGEntities {
     public static final DeferredRegister<EntityType<?>> ENTITIES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, IronsSpellOMG.ModId);
@@ -24,7 +26,8 @@ public class OMGEntities {
     public static final RegistryObject<EntityType<ChronoSphereEntity>> CHRONO_SPHERE_ENTITY =
             ENTITIES.register("entity_chrono_sphere", () -> EntityType.Builder
                     .<ChronoSphereEntity>of(ChronoSphereEntity::new, MobCategory.MISC)
-                    .sized(.1F, .1F)
-                    .build(ResourceLocation.fromNamespaceAndPath(IronsSpellOMG.ModId, "entity_chrono_sphere").toString())
+                    .sized(1F, 1F)
+                    .clientTrackingRange(16)
+                    .build(resource("entity_chrono_sphere").toString())
             );
 }
