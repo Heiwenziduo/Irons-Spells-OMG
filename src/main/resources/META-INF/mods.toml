@@ -65,11 +65,18 @@ description='''${mod_description}'''
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
-#Iron's Spells'n book required
+# Iron's Spells'n book required
 [[dependencies.${mod_id}]]
 modId="irons_spellbooks"
 mandatory=true
 versionRange="[${irons_spells_version},)"
+ordering="NONE"
+side="BOTH"
+# fvlib
+[[dependencies.${mod_id}]]
+modId="fvlib"
+mandatory=true
+versionRange="[${fvlib_version},)"
 ordering="NONE"
 side="BOTH"
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares

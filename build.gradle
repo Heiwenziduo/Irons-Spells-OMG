@@ -205,9 +205,9 @@ dependencies {
 
 
     // myself
-    implementation fg.deobf(jarJar("com.github.heiwenziduo.fvlib:fvlib:1.0.0")) {
+    implementation fg.deobf(jarJar("com.github.heiwenziduo.fvlib:fvlib:${fvlib_version}")) {
         transitive = false
-        jarJar.ranged(it, "[1.0.0,)")
+        jarJar.ranged(it, "[${fvlib_version},)")
     }
 }
 
@@ -227,7 +227,7 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
-            irons_spells_version: irons_spells_version
+            irons_spells_version: irons_spells_version, fvlib_version: fvlib_version
     ]
     inputs.properties replaceProperties
 
