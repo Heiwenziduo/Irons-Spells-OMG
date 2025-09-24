@@ -2,10 +2,6 @@ package com.github.heiwenziduo.ironspellomg.initializer;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
 import com.github.heiwenziduo.ironspellomg.entity.ChronoSphereEntity;
-import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
-import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;

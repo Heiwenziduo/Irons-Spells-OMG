@@ -1,6 +1,7 @@
 package com.github.heiwenziduo.ironspellomg.initializer;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
+import com.github.heiwenziduo.ironspellomg.spell.nature.LivingArmor;
 import com.github.heiwenziduo.ironspellomg.spell.timelessvoid.ChronoSphere;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
@@ -21,4 +22,5 @@ public class OMGSpells {
     }
 
     public static final RegistryObject<AbstractSpell> CHRONO_SPHERE = registerSpell(new ChronoSphere());
+    public static final RegistryObject<AbstractSpell> LIVING_ARMOR = registerSpell(new LivingArmor());
 }

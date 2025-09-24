@@ -2,6 +2,7 @@ package com.github.heiwenziduo.ironspellomg.spell.timelessvoid;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
 import com.github.heiwenziduo.ironspellomg.entity.ChronoSphereEntity;
+import com.github.heiwenziduo.ironspellomg.spell.OMGHookedSpell;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
@@ -15,9 +16,11 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
+import static com.github.heiwenziduo.ironspellomg.IronsSpellOMG.resource;
+
 /// 时间结界
 @AutoSpellConfig
-public class ChronoSphere extends AbstractSpell {
+public class ChronoSphere extends OMGHookedSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
@@ -66,7 +69,7 @@ public class ChronoSphere extends AbstractSpell {
 
     @Override
     public ResourceLocation getSpellResource() {
-        return ResourceLocation.fromNamespaceAndPath(IronsSpellOMG.ModId, "chrono_sphere");
+        return resource("chrono_sphere");
     }
 
     @Override
