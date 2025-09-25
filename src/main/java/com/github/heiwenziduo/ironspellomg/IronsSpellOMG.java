@@ -2,6 +2,7 @@ package com.github.heiwenziduo.ironspellomg;
 
 import com.github.heiwenziduo.ironspellomg.initializer.OMGEffects;
 import com.github.heiwenziduo.ironspellomg.initializer.OMGEntities;
+import com.github.heiwenziduo.ironspellomg.initializer.OMGItems;
 import com.github.heiwenziduo.ironspellomg.initializer.OMGSpells;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,6 +26,7 @@ public class IronsSpellOMG {
 
         OMGEffects.register(eventBus);
         OMGEntities.register(eventBus);
+        OMGItems.register(eventBus);
         OMGSpells.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
