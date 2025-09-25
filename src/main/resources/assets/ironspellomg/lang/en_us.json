@@ -1,11 +1,15 @@
 {
-  "ui.ironspellomg.armor": "%d Armor",
-  "ui.ironspellomg.effect_length": "%d Effect Length",
-  "ui.ironspellomg.radius": "%d Block Radius",
-  "ui.ironspellomg.passive_regen": "%d Life Regen",
+  "curios.identifier.omg_item_1": "Items",
+  "curios.identifier.scepter": "Specter",
+  "curios.identifier.shard": "Shard",
+
+  "effect.ironspellomg.living_armor": "Living Armor",
 
   "spell.ironspellomg.chrono_sphere": "Chronosquare",
   "spell.ironspellomg.living_armor": "Living Armor",
 
-  "effect.ironspellomg.living_armor": "Living Armor"
+  "ui.ironspellomg.armor": "%d Armor",
+  "ui.ironspellomg.effect_length": "%d Effect Length",
+  "ui.ironspellomg.radius": "%d Block Radius",
+  "ui.ironspellomg.passive_regen": "%d Life Regen"
 }
