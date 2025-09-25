@@ -38,8 +38,8 @@ public class LivingArmor extends OMGHookedSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.ironspellomg.passive_regen", LivingArmor_LifeGen * spellLevel),
-                Component.translatable("ui.ironspellomg.armor", LivingArmor_Armor * spellLevel),
+                Component.translatable("ui.ironspellomg.passive_regen", Utils.stringTruncation(LivingArmor_LifeGen * spellLevel, 1)),
+                Component.translatable("ui.ironspellomg.armor", Utils.stringTruncation(LivingArmor_Armor * spellLevel, 1)),
                 Component.translatable("ui.ironspellomg.effect_length", Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 20, 1))
 
         );
@@ -86,10 +86,6 @@ public class LivingArmor extends OMGHookedSpell {
 
         Messages.sendToPlayersTrackingEntity(new ClientboundOakskinParticles(entity.position()), entity, true);
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
-    }
-
-    private float getPercentDamage(int spellLevel, LivingEntity entity) {
-        return OakskinEffect.getReductionAmount(spellLevel) * 100;
     }
 
     @Override
