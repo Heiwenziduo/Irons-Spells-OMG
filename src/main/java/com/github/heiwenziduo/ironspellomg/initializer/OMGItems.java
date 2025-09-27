@@ -1,6 +1,7 @@
 package com.github.heiwenziduo.ironspellomg.initializer;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
+import com.github.heiwenziduo.ironspellomg.curio.Butterfly;
 import com.github.heiwenziduo.ironspellomg.curio.OMGHookedCurio;
 import com.github.heiwenziduo.ironspellomg.curio.Refresher;
 import net.minecraft.world.item.Item;
@@ -15,6 +16,7 @@ public class OMGItems {
         ITEMS.register(eventBus);
     }
 
+    public static final RegistryObject<Item> BUTTERFLY = ITEMS.register("butterfly", Butterfly::new);
     public static final RegistryObject<OMGHookedCurio> REFRESHER = ITEMS.register("refresher", Refresher::new);
 
 }
