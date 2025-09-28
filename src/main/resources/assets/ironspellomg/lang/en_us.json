@@ -1,8 +1,12 @@
 {
-  "curios.identifier.omg_item_1": "Items",
+  "curios.identifier.omg_item_1": "Rune Gear",
   "curios.identifier.passive_ability": "Passive Ability",
   "curios.identifier.scepter": "Specter",
   "curios.identifier.shard": "Shard",
+
+  "curios.modifiers.omg_item_1": "When equipped as Rune Gear",
+  "curios.modifiers.passive_ability": "When equipped as Passive Ability",
+
 
   "effect.ironspellomg.living_armor": "Living Armor",
 
