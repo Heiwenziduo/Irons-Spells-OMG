@@ -13,9 +13,9 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.UUID;
 
-public class Butterfly0 extends Item {
+public class _Butterfly0 extends Item {
 
-    public Butterfly0() {
+    public _Butterfly0() {
         super(new Properties().stacksTo(1));
     }
 
