@@ -1,7 +1,9 @@
 package com.github.heiwenziduo.ironspellomg.data;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
+import com.github.heiwenziduo.ironspellomg.data.provider.OMGBlockTagProvider;
 import com.github.heiwenziduo.ironspellomg.data.provider.OMGItemModelProvider;
+import com.github.heiwenziduo.ironspellomg.data.provider.OMGItemTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -23,5 +25,9 @@ public class OMGDataGen {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         generator.addProvider(event.includeClient(), new OMGItemModelProvider(packOutput, existingFileHelper));
+
+        // item tags
+        OMGBlockTagProvider btp = generator.addProvider(event.includeServer(), new OMGBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new OMGItemTagProvider(packOutput, lookupProvider, btp.contentsGetter(), existingFileHelper));
     }
 }

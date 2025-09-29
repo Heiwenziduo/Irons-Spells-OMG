@@ -2,6 +2,7 @@ package com.github.heiwenziduo.ironspellomg.initializer;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
 import com.github.heiwenziduo.ironspellomg.curio.BootOfTravel;
+import com.github.heiwenziduo.ironspellomg.curio.HeartOfDragon;
 import com.github.heiwenziduo.ironspellomg.curio.OMGHookedCurio;
 import com.github.heiwenziduo.ironspellomg.curio.Refresher;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -13,8 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.UUID;
 
-import static com.github.heiwenziduo.fvlib.library.api.FvAttribute.EVASION;
-import static com.github.heiwenziduo.fvlib.library.api.FvAttribute.PASSIVE_REGEN;
+import static com.github.heiwenziduo.fvlib.library.api.FvAttribute.*;
 import static io.redspace.ironsspellbooks.api.registry.AttributeRegistry.*;
 import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.*;
 import static net.minecraft.world.entity.ai.attributes.Attributes.*;
@@ -39,24 +39,22 @@ public class OMGItems {
     /// 远行鞋
     public static final RegistryObject<OMGHookedCurio> BOOT_OF_TRAVEL = ITEMS.register("boot_of_travel", () -> new BootOfTravel()
             .addAttribute(MOVEMENT_SPEED, new AttributeModifier(StaticUUID, "boot_of_travel", 0.2, ADDITION)));
-
+    /// 魔龙之心
+    public static final RegistryObject<OMGHookedCurio> HEART_OF_DRAGON = ITEMS.register("heart_of_dragon", () -> new HeartOfDragon()
+            .addAttribute(MAX_HEALTH, new AttributeModifier(StaticUUID, "heart_of_dragon", 1.5, MULTIPLY_TOTAL)));
 
     // ========================================== Common items ================================================================
     /// 蝴蝶
     public static final RegistryObject<OMGHookedCurio> BUTTERFLY = ITEMS.register("butterfly", () -> new OMGHookedCurio()
             .addAttribute(EVASION, new AttributeModifier(StaticUUID, "butterfly", 0.3, ADDITION))
-            .addAttribute(ATTACK_SPEED, new AttributeModifier(StaticUUID, "butterfly", 0.3, ADDITION))
+            .addAttribute(ATTACK_SPEED, new AttributeModifier(StaticUUID, "butterfly", 0.3, MULTIPLY_BASE))
             .addAttribute(ATTACK_DAMAGE, new AttributeModifier(StaticUUID, "butterfly", 0.3, MULTIPLY_BASE))
             .addAttribute(ARMOR, new AttributeModifier(StaticUUID, "butterfly", 0.10, MULTIPLY_BASE)));
-    /// 魔龙之心
-    public static final RegistryObject<OMGHookedCurio> HEART_OF_DRAGON = ITEMS.register("heart_of_dragon", () -> new OMGHookedCurio()
-            .addAttribute(MAX_HEALTH, new AttributeModifier(StaticUUID, "heart_of_dragon", 1.5, MULTIPLY_TOTAL))
-            //todo: dynamic passive_regen based on max_hp
-            .addAttribute(PASSIVE_REGEN, new AttributeModifier(StaticUUID, "heart_of_dragon", 1, MULTIPLY_BASE)));
     /// 玲珑心
     public static final RegistryObject<OMGHookedCurio> OCTARINE_CORE = ITEMS.register("octarine_core", () -> new OMGHookedCurio()
             .addAttribute(MAX_HEALTH, new AttributeModifier(StaticUUID, "octarine_core", 10, ADDITION))
             .addAttribute(MAX_MANA.get(), new AttributeModifier(StaticUUID, "octarine_core", 100, ADDITION))
             .addAttribute(MANA_REGEN.get(), new AttributeModifier(StaticUUID, "octarine_core", 2, ADDITION))
-            .addAttribute(COOLDOWN_REDUCTION.get(), new AttributeModifier(StaticUUID, "octarine_core", 25, ADDITION)));
+            .addAttribute(COOLDOWN_REDUCTION.get(), new AttributeModifier(StaticUUID, "octarine_core", 25, ADDITION))
+            .addAttribute(ITEM_COOLDOWN_REDUCTION, new AttributeModifier(StaticUUID, "octarine_core", 0.25, ADDITION)));
 }
