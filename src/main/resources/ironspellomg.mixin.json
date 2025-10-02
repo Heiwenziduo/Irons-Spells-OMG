@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.heiwenziduo.ironspellomg.mixin",
+  "plugin": "com.github.heiwenziduo.ironspellomg.mixin.plugin.MixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "ironspellomg.mixin.refmap.json",
+  "mixins": [
+    "ItemCooldownsMixin"
+  ],
+  "client": [
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

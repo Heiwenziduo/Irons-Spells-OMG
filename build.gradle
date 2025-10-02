@@ -212,12 +212,12 @@ dependencies {
 }
 
 // MixinGradle Settings
-//mixin {
-//    add sourceSets.main, 'a.mixin.refmap.json'
-//    config 'a.mixin.json'
-//    debug.verbose = true
-//    debug.export = true
-//}
+mixin {
+    add sourceSets.main, 'ironspellomg.mixin.refmap.json'
+    config 'ironspellomg.mixin.json'
+    debug.verbose = true
+    debug.export = true
+}
 
 
 tasks.named('processResources', ProcessResources).configure {
