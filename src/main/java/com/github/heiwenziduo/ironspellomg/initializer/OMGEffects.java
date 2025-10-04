@@ -1,7 +1,7 @@
 package com.github.heiwenziduo.ironspellomg.initializer;
 
 import com.github.heiwenziduo.fvlib.library.api.DispelType;
-import com.github.heiwenziduo.fvlib.library.api.FvAttribute;
+import com.github.heiwenziduo.fvlib.library.registry.FvAttribute;
 import com.github.heiwenziduo.fvlib.library.effect.FvHookedEffect;
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
 import com.github.heiwenziduo.ironspellomg.effect.NormalDefinition;

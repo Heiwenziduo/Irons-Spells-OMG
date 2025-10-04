@@ -14,7 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.UUID;
 
-import static com.github.heiwenziduo.fvlib.library.api.FvAttribute.*;
+import static com.github.heiwenziduo.fvlib.library.registry.FvAttribute.*;
 import static io.redspace.ironsspellbooks.api.registry.AttributeRegistry.*;
 import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.*;
 import static net.minecraft.world.entity.ai.attributes.Attributes.*;

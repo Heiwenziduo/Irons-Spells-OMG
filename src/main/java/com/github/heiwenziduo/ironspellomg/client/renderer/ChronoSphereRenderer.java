@@ -54,7 +54,7 @@ public class ChronoSphereRenderer extends TecEntityRenderer<ChronoSphereEntity> 
 
         /// {@link net.minecraft.client.renderer.entity.LivingEntityRenderer#render}
         RenderType rendertype = RenderType.entityTranslucent(getTextureLocation(pEntity));
-        VertexConsumer vertexconsumer = pBuffer.getBuffer(model.renderType(getTextureLocation(pEntity)));
+        VertexConsumer vertexconsumer = pBuffer.getBuffer(rendertype);
         //int i = getOverlayCoords(pEntity, this.getWhiteOverlayProgress(pEntity, pPartialTicks));
         this.model.renderToBuffer(pPoseStack, vertexconsumer, pPackedLight, 1, 1.0F, 1.0F, 1.0F, 0.5f);
         pPoseStack.popPose();
