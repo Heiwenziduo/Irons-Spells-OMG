@@ -7,20 +7,39 @@ import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.github.heiwenziduo.ironspellomg.IronsSpellOMG.resource;
 
 /// 时间结界
 @AutoSpellConfig
 public class ChronoSphere extends OMGHookedSpell {
+
+    @Override
+    public ResourceLocation getSpellResource() {
+        return resource("chrono_sphere");
+    }
+
+    @Override
+    public DefaultConfig getDefaultConfig() {
+        return defaultConfig;
+    }
+
+    @Override
+    public CastType getCastType() {
+        return CastType.LONG;
+    }
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
@@ -46,11 +65,11 @@ public class ChronoSphere extends OMGHookedSpell {
     }
 
     private float getSphereRadius(int spellLevel) {
-        return 5 + 2 * spellLevel;
+        return 5 + spellLevel;
     }
 
     private float getSphereEffectLength(int spellLevel) {
-        return 4 + 1.5f * spellLevel;
+        return 4 + 0.75f * spellLevel;
     }
 
     @Override
@@ -68,17 +87,12 @@ public class ChronoSphere extends OMGHookedSpell {
     }
 
     @Override
-    public ResourceLocation getSpellResource() {
-        return resource("chrono_sphere");
+    public AnimationHolder getCastStartAnimation() {
+        return SpellAnimations.SLASH_ANIMATION;
     }
 
     @Override
-    public DefaultConfig getDefaultConfig() {
-        return defaultConfig;
-    }
-
-    @Override
-    public CastType getCastType() {
-        return CastType.LONG;
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(SoundRegistry.SONIC_BOOM.get());
     }
 }

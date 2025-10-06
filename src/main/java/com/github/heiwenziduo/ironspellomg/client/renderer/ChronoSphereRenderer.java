@@ -49,7 +49,6 @@ public class ChronoSphereRenderer extends TecEntityRenderer<ChronoSphereEntity> 
         // ================= test ==============
         pPoseStack.pushPose();
         pPoseStack.scale(radius * 2, radius * 2, radius * 2);
-        //todo 特效优化
         pPoseStack.translate(0, -0.5, 0);
 
         /// {@link net.minecraft.client.renderer.entity.LivingEntityRenderer#render}
