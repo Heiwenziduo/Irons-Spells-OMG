@@ -5,6 +5,7 @@ import com.github.heiwenziduo.ironspellomg.curio.BootOfTravel;
 import com.github.heiwenziduo.ironspellomg.curio.HeartOfDragon;
 import com.github.heiwenziduo.ironspellomg.curio.OMGHookedCurio;
 import com.github.heiwenziduo.ironspellomg.curio.Refresher;
+import com.github.heiwenziduo.ironspellomg.curio.passive.TimelockCurio;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -29,7 +30,8 @@ public class OMGItems {
     }
 
     // ========================================== passive abilities ===========================================================
-
+    ///
+    public static final RegistryObject<OMGHookedCurio> TIMELOCK_CURIO = ITEMS.register("timelock", TimelockCurio::new);
 
     // ========================================== special relics ==============================================================
     /// 刷新球

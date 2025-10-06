@@ -17,8 +17,14 @@ public class OMGItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        //======================================
+        simpleItem(OMGItems.TIMELOCK_CURIO);
+        //======================================
         simpleItem(OMGItems.BUTTERFLY);
         simpleItem(OMGItems.REFRESHER);
+        simpleItem(OMGItems.BOOT_OF_TRAVEL);
+        simpleItem(OMGItems.HEART_OF_DRAGON);
+        simpleItem(OMGItems.OCTARINE_CORE);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<? extends Item> item) {

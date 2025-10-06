@@ -28,8 +28,8 @@ public class OMGItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(CURIO_OMG_ITEMS_1).add(BUTTERFLY.get(), REFRESHER.get());
+        tag(CURIO_OMG_ITEMS_1).add(BUTTERFLY.get(), REFRESHER.get(), HEART_OF_DRAGON.get(), BOOT_OF_TRAVEL.get(), OCTARINE_CORE.get());
 
-        tag(CURIO_PASSIVE_ABILITY);
+        tag(CURIO_PASSIVE_ABILITY).add(TIMELOCK_CURIO.get());
     }
 }
