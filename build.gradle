@@ -152,8 +152,15 @@ repositories {
         name = "Iron's Maven - Snapshots"
         url = "https://code.redspace.io/snapshots"
     }
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroupByRegex("software\\.bernie.*")
+            includeGroup("com.eliotlash.mclib")
+        }
+    }
     maven { url = "https://maven.enginehub.org/repo/" }
-    maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
     maven { url = "https://maven.theillusivec4.top" }
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://maven.kosmx.dev/" }
@@ -184,6 +191,7 @@ dependencies {
 
     // GECKOLIB ***************************************************************************************************
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+    implementation("com.eliotlash.mclib:mclib:20")
 
     // CAELUS *****************************************************************************************************
     compileOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:${caelus_version}:api")
@@ -227,7 +235,8 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
-            irons_spells_version: irons_spells_version, fvlib_version: fvlib_version
+            irons_spells_version: irons_spells_version, fvlib_version: fvlib_version,
+            geckolib_version: geckolib_version
     ]
     inputs.properties replaceProperties
 

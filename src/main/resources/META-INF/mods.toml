@@ -72,6 +72,13 @@ mandatory=true
 versionRange="[${irons_spells_version},)"
 ordering="NONE"
 side="BOTH"
+# geckolib
+[[dependencies.${mod_id}]]
+modId="geckolib"
+mandatory=true
+versionRange="[${geckolib_version},)"
+ordering="NONE"
+side="BOTH"
 # fvlib
 [[dependencies.${mod_id}]]
 modId="fvlib"
