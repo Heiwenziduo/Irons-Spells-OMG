@@ -2,17 +2,25 @@ package com.github.heiwenziduo.ironspellomg.manager.server;
 
 import com.github.heiwenziduo.fvlib.library.FvUtil;
 import com.github.heiwenziduo.ironspellomg.curio.passive.TimelockCurio;
+import com.github.heiwenziduo.ironspellomg.network.OMGPacketHandler;
+import com.github.heiwenziduo.ironspellomg.network.packet.ClientboundTimelockAttackPacket;
 import com.github.heiwenziduo.ironspellomg.util.Utils;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import static com.github.heiwenziduo.ironspellomg.network.packet.ClientboundTimelockAttackPacket.attackDirect;
 
 //@OnlyIn(Dist.DEDICATED_SERVER)
 /// should only be used by server side
@@ -33,7 +41,7 @@ public class TimelockManagerServer {
     private final Multimap<String, TimelockContext> cacheMap = ArrayListMultimap.create();
 
     /// 将一次延时伤害加入map
-    public void triggerTimelock(LivingEntity target, LivingEntity attacker, float damage, byte life) {
+    public void triggerTimelock(@NotNull LivingEntity target, @NotNull LivingEntity attacker, float damage, byte life) {
         if (target.level().isClientSide) return;
 
         Level level = target.level();
@@ -42,7 +50,7 @@ public class TimelockManagerServer {
         String uuid = target.getStringUUID();
         entityMap.put(uuid, new TimelockContext(damage, target.getServer().getTickCount(), attacker.getStringUUID(), life));
         FvUtil.setTimeLock(target, TimelockLength);
-        syncToClient();
+        syncToClient(target, attacker);
     }
 
     /// 清理map
@@ -77,7 +85,8 @@ public class TimelockManagerServer {
 
     private record TimelockContext(float damage, long startTick, String attackerUUID, byte life) {}
 
-    private void syncToClient() {
-
+    private void syncToClient(LivingEntity target, LivingEntity attacker) {
+        var msg = new ClientboundTimelockAttackPacket(target.getId(), attackDirect(target, attacker));
+        OMGPacketHandler.sendToPlayersTrackingEntity(msg, target, true);
     }
 }

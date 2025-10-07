@@ -7,13 +7,13 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
-import static com.github.heiwenziduo.fvlib.FvLib.fvResource;
+import static com.github.heiwenziduo.ironspellomg.IronsSpellOMG.resource;
 import static net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT;
 
 public class OMGPacketHandler {
 
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
-            .named(fvResource("network"))
+            .named(resource("network"))
             .networkProtocolVersion(() -> "1.0")
             .clientAcceptedVersions(s -> true)
             .serverAcceptedVersions(s -> true)

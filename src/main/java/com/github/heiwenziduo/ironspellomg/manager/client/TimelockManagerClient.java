@@ -1,15 +1,12 @@
 package com.github.heiwenziduo.ironspellomg.manager.client;
 
-import com.github.heiwenziduo.fvlib.library.FvUtil;
-import com.github.heiwenziduo.ironspellomg.curio.passive.TimelockCurio;
-import com.github.heiwenziduo.ironspellomg.util.Utils;
+import com.github.heiwenziduo.ironspellomg.manager.server.TimelockManagerServer;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -21,56 +18,35 @@ public class TimelockManagerClient {
         return INSTANCE;
     }
 
-    /// 时停时长
-    public static final int TimelockLength = 12;
-    /// 再次造成伤害的间隔
-    public static final int RedamageDelay = 8;
-    /// 动画时长
-    public static final int AnimLength = 12;
+    public static final int AnimLength = TimelockManagerServer.AnimLength;
+    public static final int ANIM_INSTANCE_NUMBER = 4;
 
-    private final Multimap<String, TimelockContext> entityMap = ArrayListMultimap.create();
+    private final Multimap<Integer, TimelockAnim> animMap = ArrayListMultimap.create();
 
     /// 将一次延时伤害加入map
-    public void triggerTimelock(LivingEntity target, LivingEntity attacker, float damage, byte life) {
-        if (target.level().isClientSide) return;
-
-        Level level = target.level();
-        level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
-
-        String uuid = target.getStringUUID();
-        entityMap.put(uuid, new TimelockContext(damage, target.getServer().getTickCount(), attacker.getStringUUID(), life));
-        FvUtil.setTimeLock(target, TimelockLength);
-        syncToClient();
+    public void triggerAnim(int id, Vec3 dir) {
+        var collection = animMap.get(id);
+        if (collection.size() > ANIM_INSTANCE_NUMBER) {
+            collection.stream().findFirst().ifPresent(collection::remove); // 存在动画过多时弹出最早一个
+        }
+        // "Changes to the returned collection will update the underlying multimap, and vice versa."
+        collection.add(new TimelockAnim(Minecraft.getInstance().level.getGameTime(), dir));
     }
 
     /// 清理map
-    public void tick(MinecraftServer server) {
-        int currentTime = server.getTickCount();
+    public void tick(ClientLevel level) {
+        if (level == null) return;
+        long currentTime = level.getGameTime();
 
-        if (currentTime % 20 == 0) {
-            System.out.println("server tick 20 --- " + currentTime);
-            System.out.println(entityMap.entries());
+        if (currentTime % 40 == 0) {
+            System.out.println("client tick 40 --- " + currentTime);
         }
-        entityMap.entries().removeIf(entry -> {
-            LivingEntity target = (LivingEntity) Utils.findEntityByUuid(server, entry.getKey());
-            LivingEntity attacker = (LivingEntity) Utils.findEntityByUuid(server, entry.getValue().attackerUUID);
-
-            boolean flag0 = target != null;
-            boolean flag1 = target == null || !target.isAlive();
-            boolean flag2 = currentTime > entry.getValue().startTick + RedamageDelay;
-
-            System.out.println("removeIf flag:  " + flag0 + flag1 + flag2);
-            if (flag0 && !flag1 && flag2) {
-                // 仅实体存在时触发
-                TimelockCurio.doTimelockAttack(target, attacker, entry.getValue().damage, entry.getValue().life);
-            }
-            return flag1 || flag2;
+        animMap.entries().removeIf(entry -> {
+            Entity entity = level.getEntity(entry.getKey());
+            return entity == null || !entity.isAlive() || currentTime > entry.getValue().startTime + AnimLength;
         });
     }
 
-    private record TimelockContext(float damage, long startTick, String attackerUUID, byte life) {}
+    private record TimelockAnim(long startTime, Vec3 dir) {}
 
-    private void syncToClient() {
-
-    }
 }

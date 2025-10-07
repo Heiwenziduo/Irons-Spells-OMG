@@ -40,7 +40,7 @@ public class OMGItems {
             .addAttribute(MANA_REGEN.get(), new AttributeModifier(StaticUUID, "refresher", 5, ADDITION)));
     /// 远行鞋
     public static final RegistryObject<OMGHookedCurio> BOOT_OF_TRAVEL = ITEMS.register("boot_of_travel", () -> new BootOfTravel()
-            .addAttribute(MOVEMENT_SPEED, new AttributeModifier(StaticUUID, "boot_of_travel", 0.2, ADDITION)));
+            .addAttribute(MOVEMENT_SPEED, new AttributeModifier(StaticUUID, "boot_of_travel", 0.2, MULTIPLY_BASE)));
     /// 魔龙之心
     public static final RegistryObject<OMGHookedCurio> HEART_OF_DRAGON = ITEMS.register("heart_of_dragon", () -> new HeartOfDragon()
             .addAttribute(MAX_HEALTH, new AttributeModifier(StaticUUID, "heart_of_dragon", 1.5, MULTIPLY_TOTAL)));
@@ -51,7 +51,7 @@ public class OMGItems {
             .addAttribute(EVASION, new AttributeModifier(StaticUUID, "butterfly", 0.3, ADDITION))
             .addAttribute(ATTACK_SPEED, new AttributeModifier(StaticUUID, "butterfly", 0.3, MULTIPLY_BASE))
             .addAttribute(ATTACK_DAMAGE, new AttributeModifier(StaticUUID, "butterfly", 0.3, MULTIPLY_BASE))
-            .addAttribute(ARMOR, new AttributeModifier(StaticUUID, "butterfly", 0.10, MULTIPLY_BASE)));
+            .addAttribute(ARMOR, new AttributeModifier(StaticUUID, "butterfly", 0.1, MULTIPLY_BASE)));
     /// 玲珑心
     public static final RegistryObject<OMGHookedCurio> OCTARINE_CORE = ITEMS.register("octarine_core", () -> new OMGHookedCurio()
             .addAttribute(MAX_HEALTH, new AttributeModifier(StaticUUID, "octarine_core", 10, ADDITION))
