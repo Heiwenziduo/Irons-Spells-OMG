@@ -49,7 +49,8 @@ public class ClientboundTimelockAttackPacket implements BoundedNetworkPacket, Ve
         if (attacker == null) return new Vec3(random(), 0, random()).normalize();
         int r = random() < .5 ? 1 : -1;
         // 残影出现于侧面
-        float yRadius = (float) ((random() - 1) * PI / 2);
+        // todo: random摇出重复方向重复角度的概率是不是太高了 ?
+        float yRadius = (float) ((random() - 1) * PI / 3);
         return Vec3.directionFromRotation(new Vec2(0, attacker.getYRot()))
                 .cross(new Vec3(0, 1, 0))
                 .scale(r)

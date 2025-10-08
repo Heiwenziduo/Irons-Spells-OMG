@@ -1,6 +1,5 @@
 package com.github.heiwenziduo.ironspellomg.spell.timelessvoid;
 
-import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
 import com.github.heiwenziduo.ironspellomg.entity.ChronoSphereEntity;
 import com.github.heiwenziduo.ironspellomg.spell.OMGHookedSpell;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
@@ -65,7 +64,7 @@ public class ChronoSphere extends OMGHookedSpell {
     }
 
     private float getSphereRadius(int spellLevel) {
-        return 5 + spellLevel;
+        return Math.min(6 + spellLevel, 10);
     }
 
     private float getSphereEffectLength(int spellLevel) {
@@ -76,7 +75,7 @@ public class ChronoSphere extends OMGHookedSpell {
     public void onCast(Level world, int spellLevel, LivingEntity caster, CastSource castSource, MagicData playerMagicData) {
         Level level = caster.level();
         float radius = getSphereRadius(spellLevel);
-        Vec3 summonPos = caster.position().add(0, caster.getEyeHeight(), 0).add(caster.getLookAngle().scale(radius / 3));
+        Vec3 summonPos = caster.position().add(0, caster.getEyeHeight(), 0).add(caster.getLookAngle().scale(radius * 2 / 3));
 
         ChronoSphereEntity sphere = new ChronoSphereEntity(level, getSphereEffectLength(spellLevel), radius, caster);
         sphere.setPos(summonPos);

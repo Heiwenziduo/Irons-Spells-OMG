@@ -22,7 +22,7 @@ public class OMGEffects {
     }
 
     public static final RegistryObject<MobEffect> LIVING_ARMOR = EFFECTS.register("living_armor",
-            () -> new FvHookedEffect(BENEFICIAL, 0x8CFF00, DispelType.BASIC)
-                    .addAttributeModifier(FvAttribute.PASSIVE_REGEN, "c74429aa-44a7-48c3-8441-49077a041321", LivingArmor.LivingArmor_LifeGen, ADDITION)
-                    .addAttributeModifier(Attributes.ARMOR, "21922e3d-ee29-42c1-bf2d-0e61985bd702", LivingArmor.LivingArmor_Armor, ADDITION));
+            () -> new FvHookedEffect(BENEFICIAL, 0x8CFF00, DispelType.BASIC, "c74429aa-44a7-48c3-8441-49077a041321")
+                    .addAttributeModifier(FvAttribute.PASSIVE_REGEN, LivingArmor.LivingArmor_LifeGen, ADDITION)
+                    .addAttributeModifier(Attributes.ARMOR, LivingArmor.LivingArmor_Armor, ADDITION));
 }

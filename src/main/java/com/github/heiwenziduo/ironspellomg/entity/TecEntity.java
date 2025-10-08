@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class TecEntity extends Entity {
     protected static final EntityDataAccessor<Integer> DATA_REMAIN_TICK = SynchedEntityData.defineId(TecEntity.class, EntityDataSerializers.INT);
 
-    public TecEntity(EntityType<?> pEntityType, Level pLevel) {
+    protected TecEntity(EntityType<?> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -63,7 +63,7 @@ public abstract class TecEntity extends Entity {
 
     @Override
     protected void defineSynchedData() {
-        entityData.define(DATA_REMAIN_TICK, 0);
+        entityData.define(DATA_REMAIN_TICK, 100);
     }
 
     @Override
@@ -89,6 +89,9 @@ public abstract class TecEntity extends Entity {
     protected void discard0() {
         if (!level().isClientSide) {
             kill();
+        } else {
+            System.out.println("TecEntity** discard a client entity:  " + getClass().getName());
+            // discard();
         }
     }
 }

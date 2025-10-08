@@ -2,6 +2,7 @@ package com.github.heiwenziduo.ironspellomg.initializer;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
 import com.github.heiwenziduo.ironspellomg.entity.ChronoSphereEntity;
+import com.github.heiwenziduo.ironspellomg.entity.TimelockPhantom;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -20,10 +21,17 @@ public class OMGEntities {
     }
 
     public static final RegistryObject<EntityType<ChronoSphereEntity>> CHRONO_SPHERE_ENTITY =
-            ENTITIES.register("entity_chrono_sphere", () -> EntityType.Builder
+            ENTITIES.register("chrono_sphere", () -> EntityType.Builder
                     .<ChronoSphereEntity>of(ChronoSphereEntity::new, MobCategory.MISC)
                     .sized(1F, 1F)
                     .clientTrackingRange(16)
-                    .build(resource("entity_chrono_sphere").toString())
-            );
+                    .build(resource("chrono_sphere").toString()));
+
+    // =========================================================================================== Client Effect
+
+    public static final RegistryObject<EntityType<TimelockPhantom>> TIMELOCK_PHANTOM =
+            ENTITIES.register("timelock_phantom", () -> EntityType.Builder
+                    .<TimelockPhantom>of(TimelockPhantom::new, MobCategory.MISC)
+                    .sized(0.8F, 2F)
+                    .build(resource("timelock_phantom").toString()));
 }

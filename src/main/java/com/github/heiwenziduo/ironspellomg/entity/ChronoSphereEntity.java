@@ -1,6 +1,5 @@
 package com.github.heiwenziduo.ironspellomg.entity;
 
-import com.github.heiwenziduo.fvlib.FvLib;
 import com.github.heiwenziduo.fvlib.library.FvUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -20,6 +19,7 @@ import java.util.Objects;
 
 import static com.github.heiwenziduo.ironspellomg.initializer.OMGEntities.CHRONO_SPHERE_ENTITY;
 
+/// "Chronosquare"
 public class ChronoSphereEntity extends TecEntity implements TraceableEntity {
     public static final EntityDataAccessor<Float> DATA_RADIUS = SynchedEntityData.defineId(ChronoSphereEntity.class, EntityDataSerializers.FLOAT);
 
@@ -41,7 +41,7 @@ public class ChronoSphereEntity extends TecEntity implements TraceableEntity {
 
     @Override
     public void tick() {
-        //todo: 2.使之认主(team?)
+        //todo: 1.使caster的仆从不被停滞  2.给予caster及其仆从100%闪避
         if (tickCount % 5 == 0) {
             // 将结界中的活物时停
             float radius = entityData.get(DATA_RADIUS);
@@ -52,7 +52,7 @@ public class ChronoSphereEntity extends TecEntity implements TraceableEntity {
             for (var e : entitiesList) {
                 if (Objects.equals(casterUUID, e.getStringUUID())) continue;
                 //if (e.position().distanceToSqr(position()) <= radius * radius)
-                FvUtil.setTimeLock((LivingEntity) e, 10);
+                FvUtil.setTimeLock((LivingEntity) e, 7);
             }
         }
         super.tick();
@@ -60,7 +60,7 @@ public class ChronoSphereEntity extends TecEntity implements TraceableEntity {
 
     @Override
     protected void defineSynchedData() {
-        entityData.define(DATA_REMAIN_TICK, 100);
+        super.defineSynchedData();
         entityData.define(DATA_RADIUS, 3f);
     }
 

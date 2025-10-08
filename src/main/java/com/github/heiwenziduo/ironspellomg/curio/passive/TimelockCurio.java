@@ -17,8 +17,7 @@ import static com.github.heiwenziduo.ironspellomg.initializer.registry.OMGDamage
 
 @Mod.EventBusSubscriber(modid = IronsSpellOMG.ModId, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class TimelockCurio extends AbstractPassiveAbility {
-//    public static final float TimelockChance = 0.22f;
-    public static final float TimelockChance = 0.4f; // for test
+    public static final float TimelockChance = 0.33f;
     /// 单次攻击最多循环触发x次
     public static final byte MaxLoopLife = 7;
 
@@ -53,7 +52,8 @@ public class TimelockCurio extends AbstractPassiveAbility {
         //System.out.println("doTimelockAttack-----life: " + life);
         // define loop trigger
         if (attacker != null && life < MaxLoopLife) {
-            if (Math.random() > TimelockChance) return;
+            float coefficient = (float) (1 / Math.pow(2, life)); // 循环触发概率降低
+            if (Math.random() > TimelockChance * coefficient) return;
             TimelockManagerServer.getInstance().triggerTimelock(target, attacker, damage, (byte) (life + 1)); // 可以再度触发
         }
     }

@@ -48,7 +48,7 @@ public class OMGItems {
     // ========================================== Common items ================================================================
     /// 蝴蝶
     public static final RegistryObject<OMGHookedCurio> BUTTERFLY = ITEMS.register("butterfly", () -> new OMGHookedCurio()
-            .addAttribute(EVASION, new AttributeModifier(StaticUUID, "butterfly", 0.3, ADDITION))
+            .addAttribute(EVASION, new AttributeModifier(StaticUUID, "butterfly", 0.3, MULTIPLY_BASE))
             .addAttribute(ATTACK_SPEED, new AttributeModifier(StaticUUID, "butterfly", 0.3, MULTIPLY_BASE))
             .addAttribute(ATTACK_DAMAGE, new AttributeModifier(StaticUUID, "butterfly", 0.3, MULTIPLY_BASE))
             .addAttribute(ARMOR, new AttributeModifier(StaticUUID, "butterfly", 0.1, MULTIPLY_BASE)));
@@ -58,5 +58,5 @@ public class OMGItems {
             .addAttribute(MAX_MANA.get(), new AttributeModifier(StaticUUID, "octarine_core", 100, ADDITION))
             .addAttribute(MANA_REGEN.get(), new AttributeModifier(StaticUUID, "octarine_core", 2, ADDITION))
             .addAttribute(COOLDOWN_REDUCTION.get(), new AttributeModifier(StaticUUID, "octarine_core", 25, ADDITION))
-            .addAttribute(ITEM_COOLDOWN_REDUCTION, new AttributeModifier(StaticUUID, "octarine_core", 0.25, ADDITION)));
+            .addAttribute(ITEM_COOLDOWN_REDUCTION, new AttributeModifier(StaticUUID, "octarine_core", 0.25, MULTIPLY_BASE)));
 }

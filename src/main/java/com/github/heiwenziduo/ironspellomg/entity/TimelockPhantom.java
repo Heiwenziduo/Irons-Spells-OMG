@@ -39,6 +39,7 @@ public class TimelockPhantom extends TecEntity implements GeoEntity {
     }
 
     private PlayState animPredicate(AnimationState animationState) {
+        // if (getDataRemainTick() >= AnimLength) return PlayState.STOP;
         animationState.getController()
                 .setAnimationSpeed(animSpeed)
                 .setAnimation(RawAnimation.begin().then("animation.model.attack", Animation.LoopType.HOLD_ON_LAST_FRAME));
@@ -48,5 +49,11 @@ public class TimelockPhantom extends TecEntity implements GeoEntity {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return geoCache;
+    }
+
+    /// 获取随生命周期变化的不透明度 0.6 -> 0
+    public float getOpacity() {
+        // todo: ---> 0
+        return 0.6f;
     }
 }

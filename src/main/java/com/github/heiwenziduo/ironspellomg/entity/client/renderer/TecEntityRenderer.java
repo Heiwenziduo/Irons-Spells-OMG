@@ -1,4 +1,4 @@
-package com.github.heiwenziduo.ironspellomg.client.renderer;
+package com.github.heiwenziduo.ironspellomg.entity.client.renderer;
 
 import com.github.heiwenziduo.ironspellomg.entity.TecEntity;
 import com.mojang.blaze3d.vertex.PoseStack;

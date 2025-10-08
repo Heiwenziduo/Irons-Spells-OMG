@@ -1,4 +1,4 @@
-package com.github.heiwenziduo.ironspellomg.client.model;
+package com.github.heiwenziduo.ironspellomg.entity.client.model;
 
 import com.github.heiwenziduo.ironspellomg.entity.ChronoSphereEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
