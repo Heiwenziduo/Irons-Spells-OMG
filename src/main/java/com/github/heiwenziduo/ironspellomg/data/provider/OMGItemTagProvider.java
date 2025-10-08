@@ -2,7 +2,6 @@ package com.github.heiwenziduo.ironspellomg.data.provider;
 
 import com.github.heiwenziduo.ironspellomg.IronsSpellOMG;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;

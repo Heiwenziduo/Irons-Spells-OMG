@@ -1,0 +1,30 @@
+{
+  "creativetab.ironspellomg_tab": "OMG",
+
+  "curios.identifier.omg_item_1": "遗迹物品",
+  "curios.identifier.passive_ability": "英雄之证",
+  "curios.identifier.scepter": "神杖",
+  "curios.identifier.shard": "魔晶",
+
+  "curios.modifiers.omg_item_1": "装备在遗迹物品时",
+  "curios.modifiers.passive_ability": "装备在英雄之证时",
+
+
+  "effect.ironspellomg.living_armor": "活体护甲",
+
+  "item.ironspellomg.timelock": "时间锁定",
+
+  "item.ironspellomg.butterfly": "蝴蝶",
+  "item.ironspellomg.refresher": "刷新球",
+  "item.ironspellomg.boot_of_travel": "远行鞋",
+  "item.ironspellomg.heart_of_dragon": "魔龙之心",
+  "item.ironspellomg.octarine_core": "玲珑心",
+
+  "spell.ironspellomg.chrono_sphere": "时间结界",
+  "spell.ironspellomg.living_armor": "活体护甲",
+
+  "ui.ironspellomg.armor": "%d 护甲",
+  "ui.ironspellomg.effect_length": "%d 作用时长",
+  "ui.ironspellomg.radius": "%d 作用半径",
+  "ui.ironspellomg.passive_regen": "%d 生命恢复"
+}

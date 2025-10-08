@@ -41,6 +41,7 @@ public class OMGDataGen {
         generator.addProvider(server, datapackRegistryProvider);
         generator.addProvider(server, new OMGDamageTypeTagProvider(packOutput, datapackRegistryProvider.getRegistryProvider(), existingFileHelper));
 
-        //
+        // loot table
+        generator.addProvider(server, new OMGGlobalLootModifierProvider(packOutput));
     }
 }

@@ -43,7 +43,7 @@ public class OMGItems {
             .addAttribute(MOVEMENT_SPEED, new AttributeModifier(StaticUUID, "boot_of_travel", 0.2, MULTIPLY_BASE)));
     /// 魔龙之心
     public static final RegistryObject<OMGHookedCurio> HEART_OF_DRAGON = ITEMS.register("heart_of_dragon", () -> new HeartOfDragon()
-            .addAttribute(MAX_HEALTH, new AttributeModifier(StaticUUID, "heart_of_dragon", 1.5, MULTIPLY_TOTAL)));
+            .addAttribute(MAX_HEALTH, new AttributeModifier(StaticUUID, "heart_of_dragon", 2, MULTIPLY_TOTAL)));
 
     // ========================================== Common items ================================================================
     /// 蝴蝶
@@ -57,6 +57,6 @@ public class OMGItems {
             .addAttribute(MAX_HEALTH, new AttributeModifier(StaticUUID, "octarine_core", 10, ADDITION))
             .addAttribute(MAX_MANA.get(), new AttributeModifier(StaticUUID, "octarine_core", 100, ADDITION))
             .addAttribute(MANA_REGEN.get(), new AttributeModifier(StaticUUID, "octarine_core", 2, ADDITION))
-            .addAttribute(COOLDOWN_REDUCTION.get(), new AttributeModifier(StaticUUID, "octarine_core", 25, ADDITION))
+            .addAttribute(COOLDOWN_REDUCTION.get(), new AttributeModifier(StaticUUID, "octarine_core", 0.25, MULTIPLY_BASE))
             .addAttribute(ITEM_COOLDOWN_REDUCTION, new AttributeModifier(StaticUUID, "octarine_core", 0.25, MULTIPLY_BASE)));
 }

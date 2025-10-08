@@ -23,6 +23,7 @@ public class IronsSpellOMG {
 
         OMGEffects.register(eventBus);
         OMGEntities.register(eventBus);
+        OMGLootModifiers.register(eventBus);
         OMGItems.register(eventBus);
         OMGSpells.register(eventBus);
 
