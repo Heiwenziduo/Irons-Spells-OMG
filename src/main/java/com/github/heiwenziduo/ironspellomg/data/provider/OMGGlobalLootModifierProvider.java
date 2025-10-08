@@ -23,12 +23,12 @@ public class OMGGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        addEnderCityLoot("timelock", TIMELOCK_CURIO, 0.01f);
+        addEnderCityLoot("timelock", TIMELOCK_CURIO, 0.05f);
 
-        addEnderCityLoot("boot_of_travel", BOOT_OF_TRAVEL, 0.02f);
-        addEnderCityLoot("heart_of_dragon", HEART_OF_DRAGON, 0.02f);
-        addEnderCityLoot("butterfly", BUTTERFLY, 0.02f);
-        addEnderCityLoot("octarine_core", OCTARINE_CORE, 0.02f);
+        addEnderCityLoot("boot_of_travel", BOOT_OF_TRAVEL, 0.05f);
+        addEnderCityLoot("heart_of_dragon", HEART_OF_DRAGON, 0.05f);
+        addEnderCityLoot("butterfly", BUTTERFLY, 0.05f);
+        addEnderCityLoot("octarine_core", OCTARINE_CORE, 0.05f);
     }
 
     private void addEnderCityLoot(String name, RegistryObject<? extends Item> item, Float chance) {
